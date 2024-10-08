@@ -33,11 +33,8 @@ def get_llm_response(user_prompt):
         "3. Specifične upute i ograničenja\n"
         "4. Ton, stil i jezik\n"
         "5. Struktura i organizacija\n\n"
-        "Molimo, ocijeni prompt s odvojenim odgovorima za svaku kategoriju i odvojite ih s novim linijama:\n"
-        "Za svaku kategoriju, navedite zaključak i prijedloge za poboljšanje.\n"
-        "Primjer: \n"
-        "Jasnoća i preciznost: [Ocjena]\n"
-        "Prijedlozi: [Detalji]\n\n"
+        "Ocjeni prompt koristeći '/x/' za razdvajanje odgovora:\n"
+        "Prvo vrati ocjenu, zatim detalje po svakoj kategoriji i na kraju prijedlog za poboljšanje.\n"
         "Odgovori u običnom tekstualnom formatu, izbjegavajte zvjezdice i druge markdown formate."
     )
 
@@ -61,8 +58,8 @@ def get_llm_response(user_prompt):
         # Provjeravamo ispravno polje za odgovor
         response_text = data['choices'][0]['message']['content']
 
-        # Zamjena višestrukih praznih znakova s jednim novim redom
-        response_text = re.sub(r'\n+', '\n', response_text).strip()
+        # Zamjena '/x/' s novim redom
+        response_text = response_text.replace('/x/', '\n').strip()
 
         return response_text
     except requests.RequestException as e:
