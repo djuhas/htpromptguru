@@ -6,6 +6,25 @@
     <title>HT PROMPT GURU</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        function enableSubmitButton() {
+            document.getElementById('submitButton').disabled = false;
+            scrollToBottom();
+        }
+
+        function disableSubmitButton() {
+            document.getElementById('submitButton').disabled = true;
+        }
+
+        function scrollToBottom() {
+            const messageList = document.querySelector('.message-list');
+            messageList.scrollTop = messageList.scrollHeight;
+        }
+
+        window.onload = function() {
+            scrollToBottom();
+        }
+    </script>
 </head>
 <body>
     <div class="app-header">
@@ -23,9 +42,9 @@
             {% endfor %}
         </ul>
 
-        <form method="POST">
+        <form method="POST" onsubmit="disableSubmitButton();">
             <input type="text" name="prompt" placeholder="Upišite vaš prompt..." required>
-            <button type="submit">Pošalji</button>
+            <button type="submit" id="submitButton">Pošalji</button>
         </form>
     </div>
 </body>

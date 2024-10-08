@@ -28,13 +28,12 @@ def get_llm_response(user_prompt):
     # Inicijaliziraj prompt za ocjenjivanje prema zadanom obrascu
     system_prompt = (
         "Ocijenit ćeš korisnički prompt na temelju sljedećih kategorija:"
-        "1. Jasnoća i preciznost"
-        "2. Kontekst i svrha"
-        "3. Specifične upute i ograničenja"
-        "4. Ton, stil i jezik"
-        "5. Struktura i organizacija"
-        "Ocjeni prompt koristeći '/x/' za razdvajanje svake linije odgovora"
-        "Prvo vrati ukupno procjenu (navedi score i pojasni ga), zatim detalje po kategorijama koje su mogle biti bolje i na kraju prijedlog za poboljšanje te ne zaboravi odvojiti svaki dio s '/x/'."
+        "Jasnoća i preciznost"
+        "Kontekst i svrha"
+        "Specifične upute i ograničenja"
+        "Ton, stil i jezik"
+        "Struktura i organizacija"
+        "Povratni info bi trebalo izgledati ovako Ocjena: X/5, prijedlozi po kategorijama koje su mogle biti bolje, prijedlog kako bi izgleda bolja formulacija prompta. Kod povratne poruke koristi markdownformat"
     )
 
     conversation_history = [
@@ -57,9 +56,12 @@ def get_llm_response(user_prompt):
         # Provjeravamo ispravno polje za odgovor
         response_text = data['choices'][0]['message']['content']
 
-        # Zamjena '/x/' s novim redom
-        response_text = response_text.replace('/x/', '\n').strip()
-
+        # Zamjena svih preostalih '**' s novim redom
+        response_text = response_text.replace('###', '<br><br>')
+        
+                # Zamjena svih preostalih '**' s novim redom
+        response_text = response_text.replace('**', ' ')
+        
         return response_text
     except requests.RequestException as e:
         return f"Došlo je do greške: {e}"
