@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, render_template, request, session
 import requests
 
@@ -32,10 +33,12 @@ def get_llm_response(user_prompt):
         "3. Specifične upute i ograničenja\n"
         "4. Ton, stil i jezik\n"
         "5. Struktura i organizacija\n\n"
-        "Ocijeni prompt kao: Odličan, Vrlo dobar, Dobar, Dovoljan ili Loš.\n"
-        "Pruži prijedloge za poboljšanje.\n"
-        "Odgovori u običnom tekstualnom formatu bez korištenja zvjezdica ili drugog markdown formata. "
-        "Razdvoji stavke s novim linijama za bolju čitljivost."
+        "Molimo, ocijeni prompt s odvojenim odgovorima za svaku kategoriju i odvojite ih s novim linijama:\n"
+        "Za svaku kategoriju, navedite zaključak i prijedloge za poboljšanje.\n"
+        "Primjer: \n"
+        "Jasnoća i preciznost: [Ocjena]\n"
+        "Prijedlozi: [Detalji]\n\n"
+        "Odgovori u običnom tekstualnom formatu, izbjegavajte zvjezdice i druge markdown formate."
     )
 
     conversation_history = [
@@ -45,9 +48,9 @@ def get_llm_response(user_prompt):
 
     payload = {
         "messages": conversation_history,
-        "temperature": 0.7,
-        "top_p": 0.95,
-        "max_tokens": 1500  # Povećano na 1500
+        "temperature": 0.9,  # Povećano za veći kreativni output
+        "top_p": 1.0,        # Koristi sve moguće uzorke
+        "max_tokens": 1500   # Povećano na 1500
     }
 
     try:
@@ -57,6 +60,9 @@ def get_llm_response(user_prompt):
         
         # Provjeravamo ispravno polje za odgovor
         response_text = data['choices'][0]['message']['content']
+
+        # Zamjena višestrukih praznih znakova s jednim novim redom
+        response_text = re.sub(r'\n+', '\n', response_text).strip()
 
         return response_text
     except requests.RequestException as e:

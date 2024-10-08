@@ -27,7 +27,7 @@ body {
 }
 
 .app-header h1 {
-    color: #ffffff; /* Magenta boja za naziv aplikacije */
+    color: #E20074; /* Magenta boja za naziv aplikacije */
     font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: bold;
@@ -120,9 +120,9 @@ input[type="text"] {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling the button */
+/* Smanjena veličina gumba "Pošalji" */
 button {
-    padding: 12px 25px;
+    padding: 10px 15px; /* Promjena padding-a za smanjenje veličine */
     background-color: #E20074;
     color: white;
     border: none;
@@ -144,6 +144,6 @@ form {
     justify-content: space-between;
 }
 
-form input, form button {
-    flex: 1;
+form input {
+    flex: 1; /* Gumb "Pošalji" će se smanjiti */
 }
