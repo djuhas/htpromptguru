@@ -27,7 +27,7 @@ body {
 }
 
 .app-header h1 {
-    color: #ffc4e2; /* Magenta boja za naziv aplikacije */
+    color: #ffffff; /* Magenta boja za naziv aplikacije */
     font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: bold;

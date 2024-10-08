@@ -47,13 +47,15 @@ def get_llm_response(user_prompt):
         "messages": conversation_history,
         "temperature": 0.7,
         "top_p": 0.95,
-        "max_tokens": 150
+        "max_tokens": 1500  # Povećano na 1500
     }
 
     try:
         response = requests.post(ENDPOINT, headers=headers, json=payload)
         response.raise_for_status()  # Provjera uspješnosti zahtjeva
         data = response.json()
+        
+        # Provjeravamo ispravno polje za odgovor
         response_text = data['choices'][0]['message']['content']
 
         return response_text
