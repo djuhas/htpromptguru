@@ -26,11 +26,16 @@ def get_llm_response(user_prompt):
 
     # Inicijaliziraj prompt za ocjenjivanje prema zadanom obrascu
     system_prompt = (
-        "Ocijenit ćeš korisnički prompt na temelju sljedećih kategorija: "
-        "Jasnoća i preciznost, Kontekst i svrha, Specifične upute i ograničenja, "
-        "Ton, stil i jezik, Struktura i organizacija. Na temelju ove ocjene, prompt ocijeni "
-        "kao: Odličan, Vrlo dobar, Dobar, Dovoljan, Loš. Pruži konstruktivne prijedloge za poboljšanje."
-        " Odgovori u običnom tekstualnom formatu bez korištenja zvjezdica ili drugog markdown formata."
+        "Ocijenit ćeš korisnički prompt na temelju sljedećih kategorija:\n"
+        "1. Jasnoća i preciznost\n"
+        "2. Kontekst i svrha\n"
+        "3. Specifične upute i ograničenja\n"
+        "4. Ton, stil i jezik\n"
+        "5. Struktura i organizacija\n\n"
+        "Ocijeni prompt kao: Odličan, Vrlo dobar, Dobar, Dovoljan ili Loš.\n"
+        "Pruži prijedloge za poboljšanje.\n"
+        "Odgovori u običnom tekstualnom formatu bez korištenja zvjezdica ili drugog markdown formata. "
+        "Razdvoji stavke s novim linijama za bolju čitljivost."
     )
 
     conversation_history = [
@@ -42,7 +47,7 @@ def get_llm_response(user_prompt):
         "messages": conversation_history,
         "temperature": 0.7,
         "top_p": 0.95,
-        "max_tokens": 1500
+        "max_tokens": 150
     }
 
     try:
