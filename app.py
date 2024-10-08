@@ -27,15 +27,14 @@ def get_llm_response(user_prompt):
 
     # Inicijaliziraj prompt za ocjenjivanje prema zadanom obrascu
     system_prompt = (
-        "Ocijenit ćeš korisnički prompt na temelju sljedećih kategorija:\n"
-        "1. Jasnoća i preciznost\n"
-        "2. Kontekst i svrha\n"
-        "3. Specifične upute i ograničenja\n"
-        "4. Ton, stil i jezik\n"
-        "5. Struktura i organizacija\n\n"
-        "Ocjeni prompt koristeći '/x/' za razdvajanje odgovora:\n"
-        "Prvo vrati ocjenu, zatim detalje po svakoj kategoriji i na kraju prijedlog za poboljšanje.\n"
-        "Odgovori u običnom tekstualnom formatu, izbjegavajte zvjezdice i druge markdown formate."
+        "Ocijenit ćeš korisnički prompt na temelju sljedećih kategorija:"
+        "1. Jasnoća i preciznost"
+        "2. Kontekst i svrha"
+        "3. Specifične upute i ograničenja"
+        "4. Ton, stil i jezik"
+        "5. Struktura i organizacija"
+        "Ocjeni prompt koristeći '/x/' za razdvajanje svake linije odgovora"
+        "Prvo vrati ukupno procjenu (navedi score i pojasni ga), zatim detalje po kategorijama koje su mogle biti bolje i na kraju prijedlog za poboljšanje te ne zaboravi odvojiti svaki dio s '/x/'."
     )
 
     conversation_history = [
