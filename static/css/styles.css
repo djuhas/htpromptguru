@@ -27,27 +27,15 @@ body {
 }
 
 .app-header h1 {
-    color: #ffffff; /* Magenta boja za naziv aplikacije */
+    color: #E20074; /* Magenta boja za naziv aplikacije */
     font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: bold;
-    animation: fadeInDown 1s ease-in-out;
 }
 
-/* Animation for header */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Chat container */
 .chat-container {
-    width: 60%;
+    width: 80%;  /* Širina 80% prozora */
     max-width: 800px;
     height: 80%;
     display: flex;
@@ -56,18 +44,14 @@ body {
     background-color: rgba(0, 0, 0, 0.8); /* Poluprozirni crni background */
     border-radius: 15px;
     padding: 20px;
-    overflow-y: auto;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1.5s ease;
+    overflow: hidden;  /* Sakrij dio koji izlazi izvan */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Styling for message list */
+.message-list {
+    flex: 1;  /* Povećava visinu liste poruka da popuni prostor */
+    overflow-y: auto;  /* Omogućava vertikalno scrollanje */
+    padding: 10px;  /* Unutarnji razmak */
 }
 
 /* Styling chat messages */
@@ -80,18 +64,6 @@ body {
     font-size: 16px;
     position: relative;
     display: inline-block;
-    animation: slideUp 0.5s ease-in-out;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .user-message {

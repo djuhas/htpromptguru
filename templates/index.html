@@ -13,7 +13,7 @@
     </div>
 
     <div class="chat-container">
-        <ul>
+        <ul class="message-list">
             {% for message in messages %}
                 {% if message.role == 'user' %}
                     <li class="message user-message">{{ message.content }}</li>
