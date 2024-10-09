@@ -34,9 +34,9 @@ body {
 
 /* Chat container */
 .chat-container {
-    width: 80%;  /* Širina 80% prozora */
-    max-width: 1400px; /* Maksimalna širina */
-    height: 80vh; /* Visina 80% prozora */
+    width: 90%;  /* Širina 80% prozora */
+    max-width: 1600px; /* Maksimalna širina */
+    height: 85vh; /* Visina 80% prozora */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -59,7 +59,7 @@ body {
     padding: 15px;
     border-radius: 20px;
     margin-bottom: 10px;
-    max-width: 75%;
+    max-width: 100%;
     word-wrap: break-word;
     font-size: 16px;
     position: relative;
