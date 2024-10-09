@@ -35,7 +35,7 @@ body {
 /* Chat container */
 .chat-container {
     width: 80%;  /* Širina 80% prozora */
-    max-width: 800px; /* Maksimalna širina */
+    max-width: 1400px; /* Maksimalna širina */
     height: 80vh; /* Visina 80% prozora */
     display: flex;
     flex-direction: column;
